@@ -55,6 +55,27 @@ function delay(time) {
   await page.waitForSelector('.minerBarChart', { visible: true });
   console.log('chart shown')
 
+  // Wait for the span to be available in the DOM
+  await page.waitForSelector('#hashes-per-second');
+
+  // Function to extract the value of the span element
+  const getHashesPerSecond = async () => {
+    return await page.$eval('#hashes-per-second', span => span.textContent.trim());
+  };
+
+  // Initial value
+  let previousValue = await getHashesPerSecond();
+  console.log(`Initial Hashes Per Second: ${previousValue}`);
+
+  // Continuously monitor for changes
+  setInterval(async () => {
+    const currentValue = await getHashesPerSecond();
+    if (currentValue !== previousValue) {
+      console.log(`Hashes Per Second changed to: ${currentValue}`);
+      previousValue = currentValue;
+    }
+  }, 1000); // Check every second
+
   // console.log(`Screenshot saved and available at http://localhost:${PORT}/screenshot`);
 
   // Close the browser
