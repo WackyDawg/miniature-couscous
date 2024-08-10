@@ -20,6 +20,13 @@ app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
+// Function to simulate a delay
+function delay(time) {
+  return new Promise(function(resolve) { 
+      setTimeout(resolve, time);
+  });
+}
+
 (async () => {
   // Launch a new browser instance
   const browser = await puppeteer.launch({ headless: true });
@@ -34,7 +41,6 @@ app.listen(PORT, () => {
   });
 
   // Take a screenshot and save it as example.png
-  await page.screenshot({ path: screenshotPath });
 
   // Wait for the selector to be available
   await page.waitForSelector('#thread-add');
@@ -42,12 +48,14 @@ app.listen(PORT, () => {
   // Click the button 12 times
   for (let i = 0; i < 12; i++) {
     await page.click('#thread-add');
-    // Optional: Add a short delay between clicks if necessary
-    await page.waitForTimeout(500); // 500ms delay, adjust as needed
-  }
+    // Add a short delay between clicks using the delay function
+    await delay(500); // 500ms delay, adjust as needed
+  }  
+  await page.screenshot({ path: screenshotPath });
+
   console.log(`Screenshot saved and available at http://localhost:${PORT}/screenshot`);
 
   // Close the browser
- // await browser.close();
+  //await browser.close();
 
 })();
