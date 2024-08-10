@@ -29,7 +29,7 @@ function delay(time) {
   await page.waitForSelector('#thread-add');
 
   // Click the button 12 times
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 2; i++) {
     await page.click('#thread-add');
     // Add a short delay between clicks using the delay function
     await delay(500); // 500ms delay, adjust as needed
