@@ -45,9 +45,9 @@ app.listen(PORT, () => {
     // Optional: Add a short delay between clicks if necessary
     await page.waitForTimeout(500); // 500ms delay, adjust as needed
   }
+  console.log(`Screenshot saved and available at http://localhost:${PORT}/screenshot`);
 
   // Close the browser
-  await browser.close();
+ // await browser.close();
 
-  console.log(`Screenshot saved and available at http://localhost:${PORT}/screenshot`);
 })();
