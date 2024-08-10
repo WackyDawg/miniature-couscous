@@ -35,15 +35,30 @@ function delay(time) {
 
   // Take a screenshot and save it as example.png
 
-  // Wait for the selector to be available
-  await page.waitForSelector('#thread-add');
+ // Function to introduce a delay
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-  // Click the button 12 times
-  for (let i = 0; i < 2; i++) {
-    await page.click('#thread-add');
-    // Add a short delay between clicks using the delay function
-    await delay(500); // 500ms delay, adjust as needed
-  }  
+await page.waitForSelector('#thread-add');
+
+// Click the button 2 times
+for (let i = 0; i < 2; i++) {
+  await page.click('#thread-add');
+  // Add a short delay between clicks
+  await delay(500); // 500ms delay, adjust as needed
+}
+
+// Get the value of the <span> with id="threads"
+const threadCount = await page.evaluate(() => {
+  return document.querySelector('#threads').textContent;
+});
+
+console.log('Current thread count:', threadCount);
+
+  await page.waitForSelector('input[type="text"]');
+  await page.focus('input[type="text"]');
+  await page.click('input[type="text"]', { clickCount: 3 });
+  await page.type('input[type="text"]', '43WJQfGyaivhEZBr95TZGy3HGei1LVUY5gqyUCAAE4viCRwzJgMcCn3ZVFXtySFxwZLFtrjMPJXhAT9iA9KYf4LoPoKiwBc');
+
 
   // Wait for the button to be available in the DOM
   await page.waitForSelector('#start');
