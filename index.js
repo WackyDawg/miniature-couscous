@@ -28,7 +28,7 @@ function delay(time) {
   const page = await browser.newPage();
 
   // Go to a webpage
-  await page.goto('https://mobileminer.org/mine/?auto=1&addr=43WJQfGyaivhEZBr95TZGy3HGei1LVUY5gqyUCAAE4viCRwzJgMcCn3ZVFXtySFxwZLFtrjMPJXhAT9iA9KYf4LoPoKiwBc', {
+  await page.goto('https://mobileminer.org/mining-speed-test/?fr=home', {
     waitUntil: "networkidle0",
     timeout: 0
   });
