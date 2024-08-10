@@ -45,6 +45,16 @@ function delay(time) {
     await delay(500); // 500ms delay, adjust as needed
   }  
 
+  // Wait for the button to be available in the DOM
+  await page.waitForSelector('#start');
+
+  // Click the button
+  await page.click('#start');
+
+  // Optionally, you can wait for the chart to be shown or any other actions after the click
+  await page.waitForSelector('.minerBarChart', { visible: true });
+  console.log('chart shown')
+
   // console.log(`Screenshot saved and available at http://localhost:${PORT}/screenshot`);
 
   // Close the browser
