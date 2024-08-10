@@ -49,7 +49,7 @@ function delay(time) {
   await page.waitForSelector('#start');
 
   // Click the button
-  await page.click('#start');
+  //await page.click('#start');
 
   // Optionally, you can wait for the chart to be shown or any other actions after the click
   await page.waitForSelector('.minerBarChart', { visible: true });
