@@ -3,6 +3,14 @@ const puppeteer = require('puppeteer');
 const path = require('path');
 const fs = require('fs')
 
+const app = express();
+const PORT = 4000;
+
+
+app.listen(PORT, () => {
+  console.log(`Test server is running on http://localhost:${PORT}`);
+});
+
 // Function to simulate a delay
 function delay(time) {
   return new Promise(function(resolve) { 
