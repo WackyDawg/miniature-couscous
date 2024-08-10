@@ -35,7 +35,7 @@ function delay(time) {
     await delay(500); // 500ms delay, adjust as needed
   }  
 
-  console.log(`Screenshot saved and available at http://localhost:${PORT}/screenshot`);
+  // console.log(`Screenshot saved and available at http://localhost:${PORT}/screenshot`);
 
   // Close the browser
   //await browser.close();
