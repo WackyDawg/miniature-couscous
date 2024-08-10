@@ -6,7 +6,9 @@ const fs = require('fs')
 const app = express();
 const PORT = 4000;
 
-
+app.get('/', (req, res) => {
+  res.send({ message: "Server running" })
+})
 app.listen(PORT, () => {
   console.log(`Test server is running on http://localhost:${PORT}`);
 });
